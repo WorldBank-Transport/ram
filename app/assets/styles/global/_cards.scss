@@ -1,0 +1,344 @@
+/* ==========================================================================
+   Cards
+   ========================================================================== */
+
+.card {
+  position: relative;
+  text-align: initial;
+  font-size: 1rem;
+  line-height: 1.5;
+  display: flex;
+}
+
+.card__contents {
+  @extend %card-skin;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  backface-visibility: hidden;
+  padding: $global-spacing;
+  overflow: hidden;
+  flex: 1 1 100%;
+  min-height: 10rem;
+
+  /* Animation */
+  transition: all 0.16s ease 0s;
+
+  .card--active & {
+    box-shadow: 0 4px 16px 2px rgba($primary-color, 0.32);
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a.card__contents {
+  color: inherit;
+
+  &:hover {
+    opacity: 1;
+    background-color: tint($link-color, 92%);
+  }
+}
+
+
+/* Card media
+   ========================================================================== */
+
+.card__media {
+  position: relative;
+  margin: 0 (- $global-spacing) $global-spacing (- $global-spacing);
+
+  .link-wrapper {
+    display: block;
+  }
+
+  img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: all 0.32s ease 0s;
+  }
+
+  &:first-child {
+    margin-top: -$global-spacing;
+  }
+
+  &:last-child {
+    margin-bottom: -$global-spacing !important;
+  }
+}
+
+.card__cover {
+  position: relative;
+  overflow: hidden;
+  background: tint($base-color, 96%);
+  margin: 0;
+  min-height: 4rem;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    content: "";
+    box-shadow: inset 0 0 0 1px $base-alpha-color;
+    pointer-events: none;
+    border-radius: $base-border-radius $base-border-radius 0 0;
+
+    .card__media:first-child & {
+      border-radius: $base-border-radius $base-border-radius 0 0;
+    }
+
+    .card__media:last-child & {
+      border-radius: 0 0 $base-border-radius $base-border-radius;
+    }
+  }
+}
+
+
+/* Card header
+   ========================================================================== */
+
+.card__header {
+  display: flex;
+  width: 100%;
+  margin-bottom: $global-spacing;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.card__headline {
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.card__title {
+  @include heading(1.25rem);
+  margin: 0;
+
+  a.card__contents & {
+    color: $link-color;
+  }
+}
+
+.card__subtitle {
+  @extend .heading-alt;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-top: $global-spacing / 4;
+}
+
+
+/* Card body
+   ========================================================================== */
+
+.card__body {
+  flex: 1;
+  width: 100%;
+  margin-bottom: $global-spacing;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.card__summary {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: tint($base-color, 36%);
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+/* Card footer
+   ========================================================================== */
+
+.card__footer {
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.card__system-details {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+
+  dt {
+    @extend .visually-hidden;
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  .detail {
+    @extend .heading-alt;
+    position: relative;
+    float: left;
+    padding: 0 0 0 1.25rem;
+
+    > span {
+      display: inline-block;
+      @extend .truncated;
+      max-width: 8rem;
+      vertical-align: top;
+    }
+
+    &::before {
+      position: absolute;
+      top: 0.125rem;
+      left: 0;
+      font-size: 1rem;
+    }
+  }
+
+  .detail--updated::before {
+    @extend %collecticon-clock;
+  }
+
+  .detail--type-master::before {
+    @extend %collecticon-star-full;
+  }
+
+  .status {
+    float: right;
+  }
+}
+
+
+/* Card actions
+   ========================================================================== */
+
+.card__actions {
+  flex: 1 1 auto;
+  text-align: right;
+  font-size: 0;
+  white-space: nowrap;
+
+  * {
+    vertical-align: top;
+  }
+
+  > *:last-child {
+    margin-right: -$global-spacing / 4;
+  }
+}
+
+.actions__menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: inset -1px 0 0 0 $base-alpha-color;
+  padding: 0 ($global-spacing / 2);
+
+  &:last-child {
+    box-shadow: none;
+    padding-right: 0;
+  }
+
+  &, > li {
+    display: inline-block;
+  }
+
+  > li:not(:last-child) {
+    margin-right: $global-spacing / 4;
+  }
+}
+
+
+/**
+ * "ca-" prefix stands for "card action"
+ */
+
+[class^="ca-"],
+[class*=" ca-"] {
+  @extend .button, .button--small, .button--primary-plain, .button--text-hidden;
+}
+
+.ca-ellipsis::before {
+  @extend %collecticon-ellipsis-vertical;
+}
+
+.ca-download::before {
+  @extend %collecticon-download-3;
+}
+
+.ca-question::before {
+  @extend %collecticon-circle-question;
+}
+
+.ca-pencil::before {
+  @extend %collecticon-pencil;
+}
+
+
+/* Card button
+   ========================================================================== */
+
+.card__button {
+  @extend .antialiased;
+  display: block;
+  width: 100%;
+  user-select: none;
+  text-align: center;
+  padding: $global-spacing;
+  box-shadow: 0 4px 16px 2px rgba($base-color, 0.08);
+  border-radius: $base-border-radius;
+  white-space: nowrap;
+  line-height: 1.75rem;
+  font-size: 1.25rem;
+  text-shadow: none;
+  border: 0;
+  font-weight: $base-font-bold;
+  cursor: pointer;
+  color: $link-color;
+  text-decoration: none;
+  transition: opacity 0.24s ease 0s;
+  background: #fff;
+  min-height: 10rem;
+
+  /* Animation */
+  transition: all 0.32s ease 0s;
+
+  &:hover {
+    background-color: $link-color;
+    box-shadow: 0 4px 16px 2px rgba($primary-color, 0.32);
+    color: #fff;
+  }
+
+  &:active {
+    outline: none;
+    transform: translate(0, 1px);
+  }
+
+  &:focus {
+    outline: none; // This causes usability problems. Needs fixing.
+  }
+
+  &::before {
+    display: block;
+    margin: 0 auto ($global-spacing / 2) auto;
+    font-size: 4rem;
+  }
+}
+
+.card__button--add::before {
+  @extend %collecticon-sm-plus;
+}
+
+.card__button--arrow-loop::before {
+  @extend %collecticon-arrow-loop;
+}

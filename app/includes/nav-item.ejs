@@ -1,0 +1,20 @@
+<%
+  /**
+   * Expected arguments:
+   *  children: Object
+   */
+%>
+
+<% var keys = Object.keys(children).sort() %>
+
+<% if (keys.length) { %>
+<ul class="ppn__menu">
+  <% keys.forEach(function(k) { %>
+  <li>
+      <% var activeClass = children[k].item.path === path ? 'ppn__menu-item--active' : '' %>
+      <a href="<%- site.baseurl %>/<%= children[k].item.path %>" title="Go to page" class="ppn__menu-item <%- activeClass %>"><%= children[k].item.title %></a>
+      <%- include('nav-item', {children: children[k].children || []}) %>
+  </li>
+  <% }) %>
+</ul>
+<% } %>

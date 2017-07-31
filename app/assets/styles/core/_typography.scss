@@ -1,0 +1,330 @@
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+
+/* Prose
+   ========================================================================== */
+
+.prose {
+  font-size: $base-font-size;                           // 16px
+  line-height: $base-line-height;                       // 24px
+
+  > * {
+    margin-bottom: $base-font-size * $base-line-height; // same as line-height
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.prose--responsive {
+  $prose-resp-font-size: 1.25rem;                       // 20px
+  $prose-resp-line-height: 1.6;                         // 32px
+
+  @include media(medium-up) {
+    font-size: $prose-resp-font-size;
+    line-height: $prose-resp-line-height;
+
+    > * {
+      margin-bottom: $prose-resp-font-size * $prose-resp-line-height; // same as line-height
+    }
+  }
+}
+
+
+/* Common elements
+   ========================================================================== */
+
+p, ul, ol, dl, pre, blockquote {
+  margin: 0 0 $global-spacing 0;
+}
+
+
+/* Lead
+   ========================================================================== */
+
+.lead {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  opacity: 0.64;
+}
+
+/* Prose specific */
+
+.prose--responsive {
+  > .lead {
+    @include media(medium-up) {
+      font-size: 1.5rem;
+      line-height: 1.6666667;
+    }
+  }
+}
+
+
+/* Drop cap
+   ========================================================================== */
+
+.drop-cap::first-letter {
+  font-size: 3.4em;
+  padding: 0 0.1em 0 0;
+  line-height: 0.7;
+  float: left;
+  margin: 0.1em 0.1em 0 0;
+}
+
+
+/* Lists
+   ========================================================================== */
+
+ol ol, ol ul, ul ol, ul ul {
+  margin-bottom: 0;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+dt {
+  font-weight: $base-font-bold;
+  opacity: 0.64;
+}
+
+dd {
+  margin: 0 0 ($global-spacing / 2) 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.dl-horizontal {
+  @extend .clearfix;
+  dt, dd {
+    float: left;
+  }
+  dt {
+    width: 32%;
+    clear: left;
+    padding-right: $global-spacing / 2;
+  }
+  dd {
+    width: 68%;
+    padding-left: $global-spacing / 2;
+  }
+  dd + dd {
+    margin-left: 32%;
+  }
+}
+
+/* Prose specific */
+
+.prose--responsive {
+  > dl dt {
+    @include media(medium-up) {
+      padding-top: $global-spacing / 4;
+      padding-bottom: $global-spacing / 4;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+  > dl.dl-horizontal dt {
+    @include media(medium-up) {
+      padding: 0 0 0.5rem 0;
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+}
+
+
+/* Blockquote
+   ========================================================================== */
+
+blockquote {
+  box-shadow: inset 1px 0 0 0 $base-alpha-color;
+  padding: ($global-spacing / 2) $global-spacing;
+  *:last-child {
+    margin-bottom: 0;
+  }
+  footer {
+    color: rgba($base-font-color, 0.64);
+    margin-top: -0.5rem;
+    &:before {
+      content: '— ';
+    }
+  }
+}
+
+
+/* Code
+   ========================================================================== */
+
+.prose--responsive {
+  code {
+    background-color: $base-alpha-color;
+    font-size: 0.875rem;
+    @include media(medium-up) {
+      font-size: $base-font-size;
+    }
+  }
+}
+
+
+
+/* Dividers
+   ========================================================================== */
+
+hr, .hr {
+  border: 0;
+  height: $global-spacing / 4;
+  background: $base-alpha-color;
+  width: 8rem;
+  margin: 1rem 0;
+}
+
+/* Prose specific */
+
+.prose {
+  > hr,
+  >.hr {
+    margin: 2rem 0;
+  }
+}
+
+.prose--responsive {
+  > hr,
+  > .hr {
+    @include media(medium-up) {
+      margin: 3.5rem 0;
+    }
+  }
+}
+
+
+/* Emphasis
+   ========================================================================== */
+
+b, strong {
+  font-weight: $base-font-bold;
+}
+
+small, .small {
+  font-size: 75%;
+  font-weight: normal;
+}
+
+mark, .mark {
+  padding: 0 0.25rem;
+  background: rgba($primary-color, 0.16);
+  border-radius: $base-border-radius;
+}
+
+
+/* Abbreviation
+   ========================================================================== */
+
+abbr[title] {
+  cursor: help;
+  border-bottom: 1px dashed $base-alpha-color;
+  text-decoration: none;
+  text-transform: initial;
+}
+
+
+/* Headings
+   ========================================================================== */
+
+.heading, h1, h2, h3, h4, h5, h6 {
+  font-family: $base-font-family;
+  font-weight: $base-font-bold;
+  margin-top: 0;
+  margin-bottom: $global-spacing;
+}
+
+.heading--xlarge {
+  @include heading(1.75rem, large-up);   // 28, 32, 36, 40
+}
+
+.heading--large {
+  @include heading(1.5rem, large-up);    // 24, 28, 32, 36
+}
+
+.heading--medium {
+  @include heading(1.25rem, large-up);   // 20, 24, 28, 32
+}
+
+.heading--small,
+.heading--xsmall,
+.heading--xxsmall {
+  @include heading(1rem, large-up);      // 16, 20, 24, 28
+}
+
+.heading-alt {
+  text-transform: uppercase;
+  font-weight: $base-font-regular;
+  color: rgba($base-font-color, 0.56);
+}
+
+h1 {
+  @include heading(1.75rem);   // 28
+}
+
+h2 {
+  @include heading(1.5rem);    // 24
+}
+
+h3 {
+  @include heading(1.25rem);   // 20
+}
+
+h4, h5, h6 {
+  @include heading(1rem);      // 16
+}
+
+/* Prose specific */
+
+.prose {
+  > h1:not(:first-child),
+  > h2:not(:first-child),
+  > h3:not(:first-child),
+  > h4:not(:first-child),
+  > h5:not(:first-child),
+  > h6:not(:first-child) {
+    margin-top: 2rem;
+  }
+
+  > h1 + h2:not(:first-child),
+  > h2 + h3:not(:first-child),
+  > h3 + h4:not(:first-child),
+  > h4 + h5:not(:first-child),
+  > h5 + h6:not(:first-child) {
+    margin-top: 0;
+  }
+}
+
+.prose--responsive {
+  > h1 { @include heading(1.75rem, large-up); }            // 28, 32, 36
+  > h2 { @include heading(1.5rem, large-up); }             // 24, 28, 32
+  > h3 { @include heading(1.25rem, large-up); }            // 20, 24, 28
+  > h4,
+  > h5,
+  > h6 { @include heading(1rem, large-up); }               // 16, 20, 24
+
+
+  @include media(medium-up) {
+    > h1:not(:first-child),
+    > h2:not(:first-child),
+    > h3:not(:first-child),
+    > h4:not(:first-child),
+    > h5:not(:first-child),
+    > h6:not(:first-child) {
+      margin-top: 3.5rem;
+    }
+  }
+}

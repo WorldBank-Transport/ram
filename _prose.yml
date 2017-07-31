@@ -1,0 +1,39 @@
+prose:
+
+  rooturl: app
+
+  media: app/assets/graphics/content
+
+  ignore:
+    # no need to show components that make the page
+    - /app/index.html
+    - /app/doc_components
+    - /app/assets
+    # config
+    - /_prose.yml
+    # development
+    - /gulpfile.js
+    - /package.json
+    - /yarn.lock
+    - /.gitignore
+    - /LICENSE
+
+  metadata:
+    "app/posts":
+      - name: "title"
+        field:
+          element: "text"
+          label: "Report Name"
+          value: ""
+      - name: "permalink"
+        field:
+          element: "hidden"
+          value: "/"
+      - name: 'layout'
+        field:
+          element: "hidden"
+          value: 'post.html'
+      - name: "date"
+        field:
+          element: "hidden"
+          value: "2012-08-20"

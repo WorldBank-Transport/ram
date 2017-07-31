@@ -1,0 +1,711 @@
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+.form {
+  margin-bottom: $global-spacing;
+
+  > *:last-child,
+  .inner > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form__control {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: $base-font-color;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  font-family: inherit;
+  box-shadow: inset 0 -1px 0 0 rgba($base-color, 0.16);
+
+  /* Placeholder */
+  &::placeholder {
+    opacity: 0.64;
+  }
+
+  /* States */
+  &[disabled] {
+    @extend .disabled;
+  }
+
+  &[readonly] {
+    cursor: text;
+    opacity: 0.64;
+  }
+
+  &:hover {
+    box-shadow: inset 0 -2px 0 0 rgba($base-color, 0.32);
+  }
+
+  &:focus,
+  &--focus,
+  &:active,
+  &--active {
+    outline: 0;
+    box-shadow: inset 0 -2px 0 0 $link-color;
+  }
+
+  /* Animation */
+  transition: all 0.24s ease 0s;
+}
+
+
+/* Select form control
+   ========================================================================== */
+
+select.form__control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 1.5rem;
+  cursor: pointer;
+  background: transparent url('data:image/svg+xml;utf8,' + urlencode('<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="10px" height="5px" viewBox="0 0 10 5" enable-background="new 0 0 10 5" xml:space="preserve"><g><polygon fill="#{$link-color}" points="5,5 0,0 10,0  "/></g></svg>')) right center no-repeat;
+}
+
+/* IE specific */
+
+select.form__control::-ms-expand {
+  display: none;
+}
+
+/* Firefox specific */
+
+@-moz-document url-prefix() {
+  select.form__control {
+    text-overflow: '';
+    text-indent: -2px;
+  }
+}
+
+select.form__control:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 $base-font-color;
+}
+
+
+/* Textarea form control
+   ========================================================================== */
+
+textarea.form__control {
+  height: auto;
+  resize: none;
+}
+
+
+/* Form file
+   ========================================================================== */
+
+.form__file {
+  @extend .form__control;
+  position: relative;
+  cursor: pointer;
+  padding-right: 1.5rem;
+
+  &::before {
+    @extend %collecticon-folder;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+    color: $link-color;
+  }
+
+  > input {
+    @extend .visually-hidden;
+  }
+
+  &--remove::before {
+    @extend %collecticon-trash-bin;
+    color: $danger-color;
+  }
+}
+
+
+/* Form control size modifiers
+   ========================================================================== */
+
+/* Small (24px) */
+
+.form__control--small {
+  padding: 0.125rem 0;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  height: 1.5rem;
+}
+
+/* Medium (32px)
+   Default
+*/
+
+.form__control--medium {
+  padding: 0.25rem 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  height: 2rem;
+}
+
+/* Large (40px) */
+
+.form__control--large {
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  height: 2.5rem;
+}
+
+/* XLarge (48px) */
+
+.form__control--xlarge {
+  padding: 0.5rem 0;
+  font-size: 1.25rem;
+  line-height: 2rem;
+  height: 3rem;
+}
+
+
+/* Form groups
+   ========================================================================== */
+
+.form__group {
+  @extend .clearfix;
+  margin-bottom: $global-spacing;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+/* Color modifiers
+   ========================================================================== */
+
+.form__control.form__limit--near,
+.form__control--warning {
+  box-shadow: inset 0 -2px 0 0 $warning-color;
+}
+
+.form__help.form__limit--near,
+.form__help--warning {
+  color: $warning-color
+}
+
+.form__control.form__limit--reached,
+.form__control--danger {
+  box-shadow: inset 0 -2px 0 0 $danger-color;
+}
+
+.form__help.form__limit--reached,
+.form__help--danger {
+  color: $danger-color
+}
+
+
+/* Input groups
+   ========================================================================== */
+
+.form__input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.form__input-addon {
+  position: relative;
+  width: 1%;
+  vertical-align: middle;
+  box-shadow: inset 0 -1px 0 0 rgba($base-color, 0.16);
+}
+
+.form__input-addon,
+.form__input-group .form__control {
+  display: table-cell;
+}
+
+.form__input-group .form__control {
+  position: relative;
+  float: left;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.form__input-addon-label {
+  display: inline-block;
+  line-height: 1.5rem;
+  font-size: 1rem;
+  padding: 0.25rem ($global-spacing / 2);
+  min-width: 2rem;
+  text-align: center;
+  font-style: normal;
+  font-weight: $base-font-bold;
+  opacity: 0.64;
+
+  .form__input-addon:first-child & {
+    padding-left: 0;
+  }
+
+  .form__input-addon:last-child & {
+    padding-right: 0;
+  }
+}
+
+/* Form addon label size modifiers
+   ========================================================================== */
+
+/* Small (24px) */
+
+.form__input-group--small .form__addon-label,
+.form__addon-label--small {
+  line-height: 1.25rem;
+  font-size: 0.875rem;
+  padding: 0.125rem 0.5rem;
+  min-width: 1.75rem;
+}
+
+/* Medium (32px)
+   Default
+*/
+
+.form__input-group--medium .form__addon-label,
+.form__addon-label--medium {
+  line-height: 1.5rem;
+  font-size: 1rem;
+  padding: 0.25rem 0.75rem;
+  min-width: 2rem;
+}
+
+/* Large (40px) */
+
+.form__input-group--large .form__addon-label,
+.form__addon-label--large {
+  line-height: 1.5rem;
+  font-size: 1.25rem;
+  padding: 0.5rem 1rem;
+  min-width: 2.5rem;
+}
+
+/* XLarge (48px) */
+
+.form__input-group--xlarge .form__addon-label,
+.form__addon-label--xlarge {
+  line-height: 2rem;
+  font-size: 1.25rem;
+  padding: 0.5rem 1rem;
+  min-width: 3rem;
+}
+
+
+/* Form fieldsets
+   ========================================================================== */
+
+.form__fieldset {
+  @extend .clearfix;
+  position: relative;
+  border: 0;
+  border-radius: $base-border-radius;
+  margin: 0 (-$global-spacing) $global-spacing (-$global-spacing);
+  padding: $global-spacing;
+  background: rgba($base-color, 0.04);
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form__legend {
+  @extend .heading-alt;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  border: 0;
+  float: left;
+  width: 100%;
+  margin: 0 0 ($global-spacing / 2) 0;
+  padding: ($global-spacing / 4) 0;
+}
+
+.form__fieldset-header {
+  display: flex;
+  width: 100%;
+  margin-bottom: ($global-spacing / 2);
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form__fieldset-headline {
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form__fieldset-group {
+  flex: 1 1 auto;
+  text-align: right;
+  font-size: 0;
+  white-space: nowrap;
+
+  * {
+    vertical-align: top;
+  }
+
+  > *:last-child {
+    margin-right: -$global-spacing / 4;
+  }
+}
+
+
+/* Form labels
+   ========================================================================== */
+
+label[for] {
+  cursor: pointer;
+}
+
+.form__label {
+  display: block;
+  font-weight: $base-font-bold;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 ($global-spacing / 2) 0;
+
+  &:only-of-type {
+    display: inline-block;
+  }
+
+  small {
+    opacity: 0.48;
+  }
+}
+
+
+/* Form options (radios and checkboxes)
+   ========================================================================== */
+
+.form__option {
+  position: relative;
+  display: inline-block;
+  margin-top: $global-spacing / 2;
+  font-size: 1rem;
+  line-height: 1.5;
+  cursor: pointer;
+  padding-left: $global-spacing * 1.25;
+
+  input {
+    position: absolute;
+    top: $global-spacing / 4;
+    left: 0;
+  }
+}
+
+.form__option__text {
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* Form option inline modifier */
+
+.form__option--inline {
+  display: inline-block;
+}
+
+.form__option--inline + .form__option--inline {
+  margin-left: $global-spacing;
+}
+
+
+/* Form custom options modifiers (radios and checkboxes)
+   ========================================================================== */
+
+.form__option--custom-radio,
+.form__option--custom-checkbox {
+  padding-left: $global-spacing * 1.75;
+
+  input {
+    @extend .visually-hidden;
+  }
+
+  .form__option__ui {
+    position: absolute;
+    top: 0.125rem;
+    left: 0;
+    height: 1.25rem;
+    width: 1.25rem;
+    box-shadow: inset 0 0 0 1px rgba($base-color, 0.16);
+    background: transparent;
+    transition: all 0.16s ease 0s;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: all 0.32s ease 0s;
+    }
+  }
+
+  &:hover .form__option__ui {
+    box-shadow: inset 0 0 0 2px rgba($base-color, 0.32);
+  }
+
+  input:focus  ~ .form__option__ui,
+  &:active .form__option__ui {
+    box-shadow: inset 0 0 0 2px $link-color;
+  }
+
+  input:checked ~ .form__option__ui {
+    box-shadow: inset 0 0 0 2px $link-color;
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.form__option--custom-radio {
+  .form__option__ui {
+    &, &::before {
+      border-radius: $full-border-radius;
+    }
+
+    &::before {
+      content: "";
+      height: 0.5rem;
+      width: 0.5rem;
+      background: $link-color;
+    }
+  }
+}
+
+.form__option--custom-checkbox {
+  .form__option__ui {
+    &, &:before {
+      border-radius: $base-border-radius;
+    }
+
+    &::before {
+      @extend %collecticon-sm-tick;
+      color: $link-color;
+    }
+  }
+}
+
+
+/* Form switch (checkbox)
+   ========================================================================== */
+
+.form__option--switch {
+  position: relative;
+  padding: 0;
+
+  input,
+  .form__option__text {
+    @extend .visually-hidden;
+  }
+
+  transition: all 0.16s ease 0s;
+
+  .form__option__ui {
+    position: relative;
+    display: block;
+    width: 1.75rem;
+    height: 1rem;
+    background: tint($base-color, 64%);
+    border-radius: $full-border-radius;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(0, -50%);
+      content: '';
+      height: 0.75rem;
+      width: 0.75rem;
+      border-radius: $full-border-radius;
+      background: #fff;
+      margin: 0 0.125rem;
+      transition: all 0.32s ease 0s;
+    }
+  }
+
+  input:checked ~ .form__option__ui {
+    background: $accent-color;
+
+    &::before {
+      transform: translate(100%, -50%);
+    }
+  }
+}
+
+/* Form misc
+   ========================================================================== */
+
+.form__help {
+  text-align: right;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgba($base-font-color, 0.48);
+  margin-top: $global-spacing / 2;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+/* Form inner actions
+   ========================================================================== */
+
+.form__inner-header {
+  display: flex;
+  width: 100%;
+  margin-bottom: ($global-spacing / 2);
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form__inner-headline {
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form__inner-actions {
+  flex: 1 1 auto;
+  text-align: right;
+  font-size: 0;
+  white-space: nowrap;
+
+  * {
+    vertical-align: top;
+  }
+
+  > *:last-child {
+    margin-right: -$global-spacing / 2;
+  }
+}
+
+/**
+ * "fia-" prefix stands for "form inner action"
+ * Used in "form__inner-actions"
+ */
+
+[class^="fia-"],
+[class*=" fia-"] {
+  @extend .button, .button--small;
+}
+
+.fia-trash {
+  @extend .button--danger-plain, .button--text-hidden;
+
+  &::before {
+    @extend %collecticon-trash-bin;
+  }
+}
+
+.fia-global {
+  @extend .button--primary-plain;
+}
+
+.form__options-menu {
+  display: inline-block;
+  margin: 0 0 ($global-spacing / 2) 0;
+
+  > * {
+    display: inline-block;
+    margin: 0;
+  }
+
+  dt {
+    @extend .heading-alt;
+    font-size: 0.75rem;
+    line-height: 1.5rem;
+    margin: 0 ($global-spacing / 2) 0 0;
+  }
+}
+
+
+/* Form extra actions
+   ========================================================================== */
+
+.form__extra-actions {
+  @extend .clearfix;
+  margin-bottom: $global-spacing;
+
+  * {
+    vertical-align: top;
+  }
+
+  > *:first-child {
+    margin-left: -$global-spacing;
+  }
+}
+
+.fea-plus {
+  @extend .button, .button--primary-plain;
+
+  &::before {
+    @extend %collecticon-sm-plus;
+  }
+}
+
+
+/* Form columns (simple grid system)
+   ========================================================================== */
+
+.form__hascol {
+  @extend .clearfix;
+  margin-bottom: $global-spacing;
+
+  > *:not(.form__option) {
+    margin: ($global-spacing) 0 0 0;
+  }
+}
+
+.form__hascol--2 {
+  > * {
+    @include column(6/12, $cycle: 2);
+
+    &:nth-child(1),
+    &:nth-child(2) {
+      margin-top: 0;
+    }
+  }
+}
+
+.form__hascol--3 {
+  > * {
+    @include column(4/12, $cycle: 3);
+
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+      margin-top: 0;
+    }
+  }
+}
+
+.form__hascol--4 {
+  > * {
+    @include column(3/12, $cycle: 4);
+
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3),
+    &:nth-child(4) {
+      margin-top: 0;
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "name": "ram",
+  "version": "1.0.0",
+  "description": "Rural Accessibility Map's documentation site",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WorldBank-Transport/ram"
+  },
+  "author": {
+    "name": "Development Seed",
+    "url": "https://developmentseed.org"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "scripts": {
+    "postinstall": "[ -f app/assets/scripts/config/local.js ] || echo 'module.exports = {};' > app/assets/scripts/config/local.js",
+    "serve": "DS_ENV=development gulp collecticons && gulp serve",
+    "build": "NODE_ENV=production gulp",
+    "lint": "eslint app/assets/scripts/ --ext .js",
+    "test": "echo \"No tests\" && exit 0"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ],
+      "require-globify",
+      "envify"
+    ]
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.18.8",
+    "browserify": "^14.1.0",
+    "collecticons-processor": "^3.0.0",
+    "del": "^2.2.2",
+    "ejs": "^2.5.6",
+    "envify": "^4.0.0",
+    "eslint": "^3.15.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.1",
+    "eslint-plugin-react": "^6.9.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "gulp": "^3.9.1",
+    "gulp-cache": "^0.4.5",
+    "gulp-csso": "^2.0.0",
+    "gulp-exit": "0.0.2",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-markdown-to-json": "^1.0.3",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rev": "^7.1.2",
+    "gulp-rev-replace": "^0.4.3",
+    "gulp-sass": "^3.1.0",
+    "gulp-size": "^2.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-uglify": "^3.0.0",
+    "gulp-useref": "^3.1.2",
+    "gulp-util": "^3.0.8",
+    "jeet": "7.1.0",
+    "metalsmith": "^2.3.0",
+    "metalsmith-collections": "^0.9.0",
+    "metalsmith-debug": "^1.1.0",
+    "metalsmith-directory-hierarchy": "^1.0.1",
+    "metalsmith-layouts": "^1.8.1",
+    "metalsmith-markdown": "^0.2.1",
+    "metalsmith-permalinks": "^0.5.0",
+    "node-bourbon": "^4.2.8",
+    "node-notifier": "^5.0.2",
+    "node-sass": "^4.5.0",
+    "require-globify": "^1.4.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "lodash.defaultsdeep": "^4.6.0",
+    "lodash.kebabcase": "^4.1.1"
+  }
+}

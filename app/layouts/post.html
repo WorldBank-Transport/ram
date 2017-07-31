@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('../includes/meta', {title: title + ' — ' + site.title, description: site.metaDescription}) %>
+    <%- include('../includes/styles') %>
+  </head>
+  <body>
+    <div class="page">
+
+      <header class="page__header" role="banner">
+        <div class="inner">
+          <div class="page__headline">
+            <a href="/" title="Visit homepage">
+              <h1 class="page__title"><%= site.title %></h1>
+              <% if (site.description) { %>
+              <p class="page__subtitle"><%= site.description %></p>
+              <% } %>
+            </a>
+          </div>
+          <%- include('../includes/navigation') %>
+        </div>
+      </header>
+
+      <main class="page__body" role="main">
+        <!-- inpage -->
+        <section class="inpage">
+          <header class="inpage__header">
+            <div class="inner">
+              <div class="inpage__headline">
+                <p class="inpage__subtitle"><%= section.label %></p>
+                <h1 class="inpage__title"><%= title %></h1>
+              </div>
+            </div>
+          </header>
+
+          <div class="inpage__body">
+            <div class="inner">
+              <div class="prose prose--responsive">
+                <%- contents %>
+              </div>
+            </div>
+          </div>
+
+          <footer class="inpage__footer">
+            <div class="inner">
+              <nav class="inpage__actions">
+                <ul class="elsewhere-menu">
+                  <li><a href="#" class="ipa-share" title="Share page"><span>Share</span></a></li>
+                </ul>
+                <ul class="pager-menu">
+                  <li>
+                    <% if (typeof previous !== 'undefined') { %>
+                      <a href="<%- site.baseurl %>/<%= previous.path %>" class="ipa-prev" title="View previous post"><span>Prev</span></a>
+                    <% } else { %>
+                      <a href="#" class="ipa-prev disabled" title="View previous post"><span>Prev</span></a>
+                    <% } %>
+                  </li>
+                  <li>
+                    <% if (typeof next !== 'undefined') { %>
+                      <a href="<%- site.baseurl %>/<%= next.path %>" class="ipa-next" title="View next post"><span>Next</span></a>
+                    <% } else { %>
+                      <a href="#" class="ipa-next disabled" title="View next post"><span>Next</span></a>
+                    <% } %>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </footer>
+
+        </section>
+        <!--/ inpage -->
+      </main>
+
+      <footer class="page__footer" role="contentinfo">
+        <div class="inner">
+          <p><strong>Rural Accessibility Map</strong> <small>2017 © <a href="http://www.worldbank.org/" title="Visit website">The World Bank Group</a></small></p>
+        </div>
+      </footer>
+
+    </div>
+    <%- include('../includes/scripts') %>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Labels
+   ========================================================================== */
+
+.label {
+  @extend .antialiased;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: $full-border-radius;
+  padding: 0 0.75rem;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+  font-weight: $base-font-regular;
+  color: rgba($base-color, 0.48);
+  background: rgba($base-color, 0.08);
+}
+
+
+/* Label theme modifiers
+   ========================================================================== */
+
+.label--light {
+  color: #fff;
+  background: rgba(#fff, 0.16);
+}
+
+
+/* Label context modifiers
+   ========================================================================== */
+
+.label--success,
+.label--info,
+.label--warning,
+.label--danger {
+  padding: 0 0.75rem 0 1.25rem;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 0.5rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    content: '';
+    border-radius: $full-border-radius;
+    transform: translate(0, -50%);
+    box-shadow: 0 0 0 1px rgba(#fff, 0.64);
+  }
+}
+
+.label--success {
+  &::before {
+    background-color: rgba($success-color, 0.92);
+  }
+}
+.label--info {
+  &::before {
+    background-color: rgba($info-color, 0.92);
+  }
+}
+.label--warning {
+  &::before {
+    background-color: rgba($warning-color, 0.92);
+  }
+}
+.label--danger {
+  &::before {
+    background-color: rgba($danger-color, 0.92);
+  }
+}

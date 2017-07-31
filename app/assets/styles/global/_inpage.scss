@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Global: Inpage
+   ========================================================================== */
+
+.inpage {
+  position: relative;
+}
+
+.inpage__header {
+  padding: ($global-spacing * 2) 0;
+
+  > .inner {
+    @extend .row;
+  }
+}
+
+.inpage__headline,
+.inpage__body .prose {
+  @include column(12/12);
+  max-width: 48rem;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.inpage__headline {
+  &::after {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: $base-font-color;
+    display: block;
+    margin: 0.75rem 0 0 0;
+  }
+}
+
+.inpage__title {
+  @extend .heading, .heading--xlarge;
+}
+
+.inpage__subtitle {
+  position: relative;
+  @extend .heading-alt;
+  color: rgba($base-font-color, 0.64);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin: 0;
+}
+
+.inpage__body {
+  > .inner {
+    @extend .row;
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.inpage__footer {
+  position: fixed;
+  bottom: 0;
+  right: 20rem;
+  left: 0;
+  transform: translate(20rem, 0);
+
+  > .inner {  
+    @extend .row;
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.inpage__actions {
+  @include column(12/12);
+  max-width: 48rem;
+  background: #fff;
+  padding: ($global-spacing * 2) 0;
+  box-shadow: 0 -1px 0 0 rgba($base-color, 0.08);
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0 ($global-spacing / 4);
+      float: left;
+      
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .elsewhere-menu {
+    float: left;
+  }
+
+  .pager-menu {
+    float: right;
+  }
+}
+
+
+/* Inpage actions
+   ========================================================================== */
+
+/**
+ * "ipa-" prefix stands for "inpage action"
+ */
+
+[class^="ipa-"],
+[class*=" ipa-"] {
+  @extend .button;
+  min-width: 6rem;
+}
+
+.ipa-share {
+  @extend .button--primary-raised-light;
+
+  &::before {
+    @extend %collecticon-share;
+  }
+}
+
+.ipa-prev {
+  @extend .button--primary-raised-light;
+
+  &::before {
+    @extend %collecticon-sm-chevron-left;
+  }
+}
+
+.ipa-next {
+  @extend .button--primary-raised-dark;
+
+  &::after {
+    @extend %collecticon-sm-chevron-right;
+  }
+}

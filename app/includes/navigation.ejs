@@ -1,0 +1,16 @@
+<nav class="page__prime-nav ppn">
+  <h2 class="ppn__title"><a href="#ppn__block"><span>Menu</span></a></h2>
+
+  <div class="ppn__block" id="ppn__block">
+    <% var sections = hierarchy.children.posts.children %>
+    <% var secKeys = Object.keys(sections) %>
+
+    <% secKeys.forEach(function (k) { %>
+    <section class="ppn__section">
+      <h3 class="ppn__section-title"><%= site.sectionsMeta[k] %></h3>
+      <%- include('../includes/nav-item', {children: sections[k].children}) %>
+    </section>
+    <% }) %>
+
+  </div>
+</nav>

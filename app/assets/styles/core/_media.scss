@@ -1,0 +1,116 @@
+/* ==========================================================================
+   Media
+   ========================================================================== */
+
+figure {
+  padding: 0;
+  margin: 0 0 $global-spacing 0;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.image-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.image-full {
+  width: 100%;
+  height: auto;
+}
+
+/* Prose specific */
+
+.prose > img,
+.prose > figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+.prose > figure figcaption {
+  color: rgba($base-color, 0.48);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding-top: 1rem;
+  font-weight: $base-font-regular;
+}
+
+
+/* Aligning
+   ========================================================================== */
+
+img.align-center,
+figure.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+img.align-left,
+figure.align-left {
+  float: left;
+  margin-right: $global-spacing * 1.5;
+  text-align: left;
+}
+
+img.align-right,
+figure.align-right {
+  float: right;
+  margin-left:  $global-spacing * 1.5;
+  text-align: right;
+}
+
+
+/* Media Item
+   ========================================================================== */
+
+.media-item {
+  position: relative;
+
+  img {
+    position: relative;
+    z-index: 1;
+    vertical-align: top;
+    background: #fff;
+    max-width: 100%;
+    height: auto;
+  }
+
+  &::before {
+    z-index: 2;
+  }
+}
+
+
+/* Browser + Mobile Framed Modifiers */
+
+.media-item--browser,
+.media-item--mobile {
+  background-color: tint($base-color, 88%);
+  background-repeat: no-repeat;
+}
+
+.media-item--browser {
+  padding: 2rem 0 0.5rem 0;
+  border-radius: ($base-border-radius * 2) ($base-border-radius * 2) $base-border-radius $base-border-radius;
+  background-image: svg-desktop-top(rgba($base-color, 0.24));
+  background-position: 0.625rem 0.625rem;
+
+  &::before {
+    margin: 2rem 0 0.5rem 0;
+  }
+}
+
+.media-item--mobile {
+  padding: 6rem 1rem;
+  border-radius: $base-border-radius * 16;
+  background-image: svg-mobile-top(rgba($base-color, 0.24)), svg-mobile-bottom(rgba($base-color, 0.24));
+  background-position: center 2.5rem, center calc(100% - 1rem);
+
+  &::before {
+    margin: 6rem 1rem;
+  }
+}
