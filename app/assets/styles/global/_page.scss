@@ -22,7 +22,10 @@
   color: #fff;
 
   > .inner {
-    padding: ($global-spacing * 2) ($global-spacing * 2) ($global-spacing * 5) ($global-spacing * 2);
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+    padding: ($global-spacing * 2) ($global-spacing * 2) ($global-spacing * 6) ($global-spacing * 2);
   }
 }
 
@@ -30,6 +33,7 @@
 
 .page__headline {
   margin-bottom: $global-spacing * 2;
+  flex: 0 0 auto;
 
   > a {
     display: block;

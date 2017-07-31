@@ -3,6 +3,9 @@
    ========================================================================== */
 
 .page__prime-nav {
+  overflow-y: auto;
+  flex: 1 1 auto;
+
   > *:last-child {
     margin-bottom: 0;
   }
