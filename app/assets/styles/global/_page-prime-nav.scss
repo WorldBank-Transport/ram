@@ -3,8 +3,10 @@
    ========================================================================== */
 
 .page__prime-nav {
+  overflow-x: visible;
   overflow-y: auto;
   flex: 1 1 auto;
+  margin: 0 (- $global-spacing * 2);
 
   > *:last-child {
     margin-bottom: 0;
@@ -12,7 +14,7 @@
 }
 
 .ppn__section {
-  margin-bottom: $global-spacing * 1.5;
+  margin: 0 ($global-spacing * 2) $global-spacing * 1.5 ($global-spacing * 2);
 }
 
 .ppn__title {
@@ -25,7 +27,7 @@
   color: rgba(#fff, 0.64);
   font-size: 0.75rem;
   line-height: 1;
-  margin: 0 0 ($global-spacing / 2) 0;;
+  margin: 0 0 ($global-spacing / 2) 0;
 }
 
 .ppn__menu {
