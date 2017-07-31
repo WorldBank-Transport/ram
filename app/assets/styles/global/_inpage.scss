@@ -24,17 +24,6 @@
   }
 }
 
-.inpage__headline {
-  &::after {
-    content: '';
-    width: 2rem;
-    height: 1px;
-    background: $base-font-color;
-    display: block;
-    margin: 0.75rem 0 0 0;
-  }
-}
-
 .inpage__title {
   @extend .heading, .heading--xlarge;
 }
@@ -44,7 +33,7 @@
   @extend .heading-alt;
   color: rgba($base-font-color, 0.64);
   font-size: 0.875rem;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
 }
 

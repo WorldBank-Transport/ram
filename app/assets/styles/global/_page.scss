@@ -31,15 +31,6 @@
 .page__headline {
   margin-bottom: $global-spacing * 2;
 
-  &::after {
-    content: '';
-    width: 2rem;
-    height: 1px;
-    background: #fff;
-    display: block;
-    margin: 0.75rem 0 0 0;
-  }
-
   > a {
     display: block;
     color: inherit;
@@ -68,7 +59,7 @@
   @extend .heading-alt;
   color: rgba(#fff, 0.64);
   font-size: 0.875rem;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: ($global-spacing / 4) 0;
 
   &:first-child {

@@ -45,13 +45,14 @@
   &::before {
     position: absolute;
     top: 0;
-    left: 0;
+    left: $global-spacing / 1.125;
     z-index: 1;
     height: 0;
-    width: ($global-spacing / 2);
+    width: $global-spacing / 2;
     background: $link-color;
     content: "";
     transition: all 0.24s ease 0s;
+    border-radius: $base-border-radius / 2;
   }
 
   .ppn__menu .ppn__menu & {
