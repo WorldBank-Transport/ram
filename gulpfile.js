@@ -211,7 +211,7 @@ gulp.task('metalsmith', function (done) {
 // ----------------------------------------------------------------------------//
 
 gulp.task('build', ['vendorScripts', 'javascript', 'collecticons', 'metalsmith'], function () {
-  gulp.start(['html', 'images', 'fonts', 'extras'], function () {
+  gulp.start(['html', 'styles', 'images', 'fonts', 'extras'], function () {
     return gulp.src('build/**/*')
       .pipe($.size({title: 'build', gzip: true}))
       .pipe(exit());
