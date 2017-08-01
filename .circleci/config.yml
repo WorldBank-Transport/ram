@@ -51,7 +51,7 @@ jobs:
               git config user.email "dev@developmentseed.org"
               git add .
               git commit -m "CI deploy [skip ci]"
-              git remote add origin git@github.com:developmentseed/ds-pipe.git
+              git remote add origin git@github.com:Worldbank-Transport/ram.git
               git push origin --force --quiet HEAD:gh-pages
               rm -rf .git
             else
