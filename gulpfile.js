@@ -211,7 +211,7 @@ gulp.task('metalsmith', function (done) {
 // ----------------------------------------------------------------------------//
 
 gulp.task('build', ['vendorScripts', 'javascript', 'collecticons', 'metalsmith'], function () {
-  gulp.start(['html', 'styles', 'images', 'fonts', 'extras'], function () {
+  gulp.start(['html', 'images', 'fonts', 'extras'], function () {
     return gulp.src('build/**/*')
       .pipe($.size({title: 'build', gzip: true}))
       .pipe(exit());
@@ -251,7 +251,7 @@ gulp.task('styles', function () {
 });
 
 // After being rendered, process the html files. (merge css files, etc)
-gulp.task('html', function () {
+gulp.task('html', ['styles'], function () {
   var conf = require('./_config');
   return gulp.src('build/**/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', 'build']}))
@@ -260,7 +260,7 @@ gulp.task('html', function () {
     .pipe($.if('*.js', $.uglify({compress: {comparisons: false}})))
     .pipe($.if('*.css', $.csso()))
     .pipe($.if(/\.(css|js)$/, rev()))
-    .pipe(revReplace({prefix: conf.baseurl || ''}))
+    .pipe(revReplace({prefix: conf.baseurl + '/' || ''}))
     .pipe(gulp.dest('build'));
 });
 
@@ -290,7 +290,10 @@ gulp.task('extras', function () {
     '!app/assets/graphics/**',
     '!app/assets/vendor/**',
     '!app/assets/styles/**',
-    '!app/assets/scripts/**'
+    '!app/assets/scripts/**',
+    '!app/posts/**',
+    '!app/layouts/**',
+    '!app/includes/**'
   ], {
     dot: true
   }).pipe(gulp.dest('build'));
