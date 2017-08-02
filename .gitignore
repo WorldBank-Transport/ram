@@ -39,6 +39,7 @@
 
 app/assets/scripts/config/local.js
 app/assets/styles/core/_collecticons.scss
+_config-dev.js
 
 
 ################################################
