@@ -1,6 +1,5 @@
 'use strict';
 var defaultsDeep = require('lodash.defaultsdeep');
-var fs = require('fs');
 
 var Metalsmith = require('metalsmith');
 var markdown = require('metalsmith-markdown');
@@ -11,12 +10,15 @@ var debug = require('metalsmith-debug');
 var dirHierarchy = require('metalsmith-directory-hierarchy');
 var kebabCase = require('lodash.kebabcase');
 
-module.exports = function () {
+module.exports = function (opts) {
   // Reload config.
   var config = require('./_config');
-  var configDev = require('./_config-dev');
 
-  config = defaultsDeep({}, configDev, config);
+  if (opts.env === 'staging') {
+    config = defaultsDeep({}, require('./_config-staging'), config);
+  } else if (opts.env === 'development') {
+    config = defaultsDeep({}, require('./_config-dev'), config);
+  }
 
   return Metalsmith(__dirname)
     .metadata({ site: config })

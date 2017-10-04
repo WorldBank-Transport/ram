@@ -76,7 +76,7 @@ gulp.task('serve', ['vendorScripts', 'javascript', 'styles', 'fonts', 'metalsmit
     'app/**/*.ejs',
     'app/**/*.md'
   ]).on('change', function () {
-    gulp.start('metalsmith', function () { reload(); })
+    gulp.start('metalsmith', function () { reload(); });
   });
 
   gulp.watch('app/assets/styles/**/*.scss', ['styles']);
@@ -191,7 +191,7 @@ gulp.task('collecticons', function (done) {
 // ------------------------ Metalsmith tasks ---------------------------------//
 // ---------------------------------------------------------------------------//
 gulp.task('metalsmith', function (done) {
-  metalsmithTask().build(function (err, files) {
+  metalsmithTask({env: process.env.DS_ENV}).build(function (err, files) {
     if (err) {
       notifier.notify({
         title: 'Oops! Browserify errored:',
@@ -260,7 +260,7 @@ gulp.task('html', ['styles'], function () {
     .pipe($.if('*.js', $.uglify({compress: {comparisons: false}})))
     .pipe($.if('*.css', $.csso()))
     .pipe($.if(/\.(css|js)$/, rev()))
-    .pipe(revReplace({prefix: conf.baseurl + '/' || ''}))
+    .pipe(revReplace({prefix: (conf.baseurl || '') + '/'}))
     .pipe(gulp.dest('build'));
 });
 
