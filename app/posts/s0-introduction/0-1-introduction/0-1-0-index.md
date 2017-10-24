@@ -13,3 +13,5 @@ RAM is under active development. Its codebase is available on Github:
 - [RAM frontend](https://github.com/WorldBank-Transport/ram-frontend) with the code for the user interface
 - [RAM iD](https://github.com/WorldBank-Transport/ram-iD), a customized version of [iD](https://github.com/openstreetmap/iD) to allow editing of the road network
 - [RAM data pipeline](https://github.com/WorldBank-Transport/ram-datapipeline) that handles some of the more intensive data processing
+
+To get a local dev version of everything up and running quickly check out https://github.com/WorldBank-Transport/ram-backend#offline-usage
