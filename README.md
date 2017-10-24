@@ -3,7 +3,7 @@
 
 ## Installation and Usage
 
-The steps below will walk you through setting up RAM Docs
+The steps below will walk you through setting up RAM Docs. To install RAM itself, head over to the [ram-backend repository](https://github.com/WorldBank-Transport/ram-backend)!
 
 ### Install Project Dependencies
 To set up the development environment for this website, you'll need to install the following on your system:
