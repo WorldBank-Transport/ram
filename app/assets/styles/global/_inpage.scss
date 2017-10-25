@@ -29,8 +29,8 @@
 }
 
 .inpage__subtitle {
-  position: relative;
   @extend .heading-alt;
+  position: relative;
   color: rgba($base-font-color, 0.64);
   font-size: 0.875rem;
   line-height: 1rem;
@@ -38,6 +38,8 @@
 }
 
 .inpage__body {
+  padding-bottom: 8rem;
+
   > .inner {
     @extend .row;
 
