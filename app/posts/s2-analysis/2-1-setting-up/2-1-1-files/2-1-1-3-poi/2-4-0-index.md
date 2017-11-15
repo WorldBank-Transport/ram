@@ -38,6 +38,7 @@ For each POI category, a separate GeoJSON file needs to be uploaded. All the POI
 ### File requirements
 
 * a single GeoJSON for each POI category
+* the GeoJSON needs to be [compliant with the spec](https://tools.ietf.org/html/rfc7946), which includes being a geographic coordinate reference system (WGS84 / EPSG:4326), and units of decimal degrees.
 
 POI are defined on a project level. Each scenario uses the same set of POI.
 

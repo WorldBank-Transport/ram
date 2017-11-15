@@ -10,6 +10,7 @@ The population data is used as the origin in the analysis. These are typically p
 ## File requirements
 
 * a GeoJSON file with population data
+* the GeoJSON needs to be [compliant with the spec](https://tools.ietf.org/html/rfc7946), which includes being a geographic coordinate reference system (WGS84 / EPSG:4326), and units of decimal degrees.
 * features need to be points
 * each feature needs at least one property that can be used as a population estimate. This property needs to be an integer, or a string that can be cast to an integer, and needs to be present on all features.
 * OPTIONAL - the property `name` (string) will be used on the results page to allow for easy identification of origins. If a feature doesn't have a `name` property, it will show as 'N/A'

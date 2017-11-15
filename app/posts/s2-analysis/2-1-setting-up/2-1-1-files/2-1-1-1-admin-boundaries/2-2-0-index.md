@@ -10,6 +10,7 @@ The administrative boundaries are the units of analysis for which RAM generates 
 ## File requirements
 
 * a GeoJSON file with administrative boundaries
+* the GeoJSON needs to be [compliant with the spec](https://tools.ietf.org/html/rfc7946), which includes being a geographic coordinate reference system (WGS84 / EPSG:4326), and units of decimal degrees.
 * features need to be a polygon or multi-polygon
 * each feature needs a property `name` (string)
 
