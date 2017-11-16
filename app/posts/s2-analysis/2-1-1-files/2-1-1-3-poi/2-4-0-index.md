@@ -11,24 +11,24 @@ If the POI data contains lines or polygons, they will be converted to a point.
 
 ## OSM import
 
-This option imports POI data from OpenStreetMap for the selected categories. It is not possible to customize the OSM tags that get imported for each category. The file upload allows for a more fine-grained control over the POI data.
+This option imports POI data from OpenStreetMap from a set of pre-defined tags. For a more a more fine-grained control over the POI data, you can upload your own using a GeoJSON file.
 
 <dl class='dl-horizontal'>
   <dt>Education</dt>
-  <dd>amenity=school
-  <dd>amenity=kindergarten</dd>
-  <dd>amenity=college</dd>
-  <dd>amenity=university</dd>
+  <dd>`amenity=school`</dd>
+  <dd>`amenity=kindergarten`</dd>
+  <dd>`amenity=college`</dd>
+  <dd>`amenity=university`</dd>
   <dt>Health</dt>
-  <dd>amenity=clinic</dd>
-  <dd>amenity=doctors</dd>
-  <dd>amenity=hospital</dd>
+  <dd>`amenity=clinic`</dd>
+  <dd>`amenity=doctors`</dd>
+  <dd>`amenity=hospital`</dd>
   <dt>Finance</dt>
-  <dd>amenity=atm</dd>
-  <dd>amenity=bank</dd>
-  <dd>amenity=bureau_de_change</dd>
-  <dd>amenity=money_transfer</dd>
-  <dd>amenity=payment_center</dd>
+  <dd>`amenity=atm`</dd>
+  <dd>`amenity=bank`</dd>
+  <dd>`amenity=bureau_de_change`</dd>
+  <dd>`amenity=money_transfer`</dd>
+  <dd>`amenity=payment_center`</dd>
 </dl>
 
 ## File upload
@@ -38,7 +38,6 @@ For each POI category, a separate GeoJSON file needs to be uploaded. All the POI
 ### File requirements
 
 * a single GeoJSON for each POI category
-* the GeoJSON needs to be [compliant with the spec](https://tools.ietf.org/html/rfc7946), which includes being a geographic coordinate reference system (WGS84 / EPSG:4326), and units of decimal degrees.
+* the GeoJSON needs to be [compliant with the spec](https://tools.ietf.org/html/rfc7946), which includes being in a geographic coordinate reference system (WGS84 / EPSG:4326) with units of decimal degrees.
 
 POI are defined on a project level. Each scenario uses the same set of POI.
-
