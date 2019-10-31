@@ -1,0 +1,29 @@
+ _____               _                                  _     _____               _
+|  _  \             | |                                | |   /  ___|             | |
+| | | |_____   _____| | ___  _ __  _ __ ___   ___ _ __ | |_  \ `--.  ___  ___  __| |
+| | | / _ \ \ / / _ \ |/ _ \| '_ \| '_ ` _ \ / _ \ '_ \| __|  `--. \/ _ \/ _ \/ _` |
+| |/ /  __/\ V /  __/ | (_) | |_) | | | | | |  __/ | | | |_  /\__/ /  __/  __/ (_| |
+|___/ \___| \_/ \___|_|\___/| .__/|_| |_| |_|\___|_| |_|\__| \____/ \___|\___|\__,_|
+                            | |
+                            |_|
+====================================================================================
+
+
+/* TEAM */
+
+Developer: Daniel da Silva
+Site: http://developmentseed.org
+Twitter: @danielfdsilva
+Location: Lisbon, Portugal
+
+UI/UX Designer: Ricardo Mestre
+Site: http://developmentseed.org
+Twitter: @ricardoduplos
+Location: Lisbon, Portugal
+
+/* PROJECT */
+
+Last update: <%- lastUpdate %>
+Standards: CSS3, HTML5, RWD, WAI-ARIA
+Components: Bourbon, Collecticons, Jeet, React
+Software: GitHub (Mac), Sublime Text
